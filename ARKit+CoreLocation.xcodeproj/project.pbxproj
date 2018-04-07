@@ -23,6 +23,7 @@
 		49D206F31F124BDD00D7D622 /* SCNNode+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D206F21F124BDD00D7D622 /* SCNNode+Extensions.swift */; };
 		71B6A9EDA814C7F42DF123D9 /* Pods_ARKit_CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6C10523EF85AA6B7CDF962AD /* Pods_ARKit_CoreLocation.framework */; };
 		D8C205D11F5B197200675E6E /* NotSupportedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8C205D01F5B197200675E6E /* NotSupportedViewController.swift */; };
+		E5251AB220790F5A00A52CCF /* SkyscannerPlace.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5251AB120790F5A00A52CCF /* SkyscannerPlace.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +47,7 @@
 		6C10523EF85AA6B7CDF962AD /* Pods_ARKit_CoreLocation.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ARKit_CoreLocation.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A967016A4C9D5DA8BF8AE438 /* Pods-ARKit+CoreLocation.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ARKit+CoreLocation.release.xcconfig"; path = "Pods/Target Support Files/Pods-ARKit+CoreLocation/Pods-ARKit+CoreLocation.release.xcconfig"; sourceTree = "<group>"; };
 		D8C205D01F5B197200675E6E /* NotSupportedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotSupportedViewController.swift; sourceTree = "<group>"; };
+		E5251AB120790F5A00A52CCF /* SkyscannerPlace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkyscannerPlace.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +83,7 @@
 		49A3FBDA1F09988100AA59C8 /* ARKit+CoreLocation */ = {
 			isa = PBXGroup;
 			children = (
+				E5251AB020790F3800A52CCF /* Models */,
 				49A3FBF31F099A4A00AA59C8 /* Source */,
 				49A3FBDB1F09988100AA59C8 /* AppDelegate.swift */,
 				49A3FBDF1F09988100AA59C8 /* ViewController.swift */,
@@ -116,6 +119,14 @@
 				A967016A4C9D5DA8BF8AE438 /* Pods-ARKit+CoreLocation.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		E5251AB020790F3800A52CCF /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				E5251AB120790F5A00A52CCF /* SkyscannerPlace.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		F2E2E005FD78BDD52B0F8A94 /* Frameworks */ = {
@@ -259,6 +270,7 @@
 				49A3FC011F09B9CF00AA59C8 /* SceneLocationEstimate.swift in Sources */,
 				49A3FBDC1F09988100AA59C8 /* AppDelegate.swift in Sources */,
 				49D206F31F124BDD00D7D622 /* SCNNode+Extensions.swift in Sources */,
+				E5251AB220790F5A00A52CCF /* SkyscannerPlace.swift in Sources */,
 				49A3FBF51F099A5F00AA59C8 /* LocationManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
