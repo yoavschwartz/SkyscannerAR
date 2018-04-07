@@ -8,8 +8,9 @@
 
 import Foundation
 import CoreLocation
+import UIKit
 
-struct SkyscannerPlace {
+struct SkyscannerPlace: Codable {
     let skyscannerPlaceId: String
     let name: String
     let latitude: Double
@@ -21,5 +22,11 @@ struct SkyscannerPlace {
 
     var location: CLLocation {
         return CLLocation(coordinate: coordinates, altitude: 236)
+    }
+}
+
+extension LocationAnnotationNode {
+    convenience init(place: SkyscannerPlace, price: Int, currencyCode: String, image: UIImage = #imageLiteral(resourceName: "pin")) {
+        self.init(location: place.location, image: image)
     }
 }

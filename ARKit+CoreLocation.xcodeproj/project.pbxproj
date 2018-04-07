@@ -24,6 +24,10 @@
 		71B6A9EDA814C7F42DF123D9 /* Pods_ARKit_CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6C10523EF85AA6B7CDF962AD /* Pods_ARKit_CoreLocation.framework */; };
 		D8C205D11F5B197200675E6E /* NotSupportedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8C205D01F5B197200675E6E /* NotSupportedViewController.swift */; };
 		E5251AB220790F5A00A52CCF /* SkyscannerPlace.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5251AB120790F5A00A52CCF /* SkyscannerPlace.swift */; };
+		E5251AB5207914FA00A52CCF /* skyscannerplaces.json in Resources */ = {isa = PBXBuildFile; fileRef = E5251AB4207914FA00A52CCF /* skyscannerplaces.json */; };
+		E5251AB7207918A200A52CCF /* SkyscannerQuote.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5251AB6207918A200A52CCF /* SkyscannerQuote.swift */; };
+		E5251AB92079222900A52CCF /* PlaceAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5251AB82079222900A52CCF /* PlaceAnnotationView.swift */; };
+		E5251ABB207923DA00A52CCF /* PlaceAnnotationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E5251ABA207923DA00A52CCF /* PlaceAnnotationView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +52,10 @@
 		A967016A4C9D5DA8BF8AE438 /* Pods-ARKit+CoreLocation.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ARKit+CoreLocation.release.xcconfig"; path = "Pods/Target Support Files/Pods-ARKit+CoreLocation/Pods-ARKit+CoreLocation.release.xcconfig"; sourceTree = "<group>"; };
 		D8C205D01F5B197200675E6E /* NotSupportedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotSupportedViewController.swift; sourceTree = "<group>"; };
 		E5251AB120790F5A00A52CCF /* SkyscannerPlace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkyscannerPlace.swift; sourceTree = "<group>"; };
+		E5251AB4207914FA00A52CCF /* skyscannerplaces.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = skyscannerplaces.json; sourceTree = "<group>"; };
+		E5251AB6207918A200A52CCF /* SkyscannerQuote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkyscannerQuote.swift; sourceTree = "<group>"; };
+		E5251AB82079222900A52CCF /* PlaceAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceAnnotationView.swift; sourceTree = "<group>"; };
+		E5251ABA207923DA00A52CCF /* PlaceAnnotationView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlaceAnnotationView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,10 +91,13 @@
 		49A3FBDA1F09988100AA59C8 /* ARKit+CoreLocation */ = {
 			isa = PBXGroup;
 			children = (
+				E5251AB32079146700A52CCF /* Data */,
 				E5251AB020790F3800A52CCF /* Models */,
 				49A3FBF31F099A4A00AA59C8 /* Source */,
 				49A3FBDB1F09988100AA59C8 /* AppDelegate.swift */,
 				49A3FBDF1F09988100AA59C8 /* ViewController.swift */,
+				E5251ABA207923DA00A52CCF /* PlaceAnnotationView.xib */,
+				E5251AB82079222900A52CCF /* PlaceAnnotationView.swift */,
 				D8C205D01F5B197200675E6E /* NotSupportedViewController.swift */,
 				49A3FBE41F09988100AA59C8 /* Assets.xcassets */,
 				49A3FBE61F09988100AA59C8 /* LaunchScreen.storyboard */,
@@ -125,8 +136,17 @@
 			isa = PBXGroup;
 			children = (
 				E5251AB120790F5A00A52CCF /* SkyscannerPlace.swift */,
+				E5251AB6207918A200A52CCF /* SkyscannerQuote.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		E5251AB32079146700A52CCF /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				E5251AB4207914FA00A52CCF /* skyscannerplaces.json */,
+			);
+			path = Data;
 			sourceTree = "<group>";
 		};
 		F2E2E005FD78BDD52B0F8A94 /* Frameworks */ = {
@@ -198,8 +218,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E5251AB5207914FA00A52CCF /* skyscannerplaces.json in Resources */,
 				49A3FBE81F09988100AA59C8 /* LaunchScreen.storyboard in Resources */,
 				49A3FBE51F09988100AA59C8 /* Assets.xcassets in Resources */,
+				E5251ABB207923DA00A52CCF /* PlaceAnnotationView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -259,6 +281,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				49099E391F24BAE5007B76FD /* SCNVector3+Extensions.swift in Sources */,
+				E5251AB7207918A200A52CCF /* SkyscannerQuote.swift in Sources */,
 				49A3FBF71F099C8100AA59C8 /* SceneLocationView.swift in Sources */,
 				49A3FC031F09BADB00AA59C8 /* FloatingPoint+Radians.swift in Sources */,
 				D8C205D11F5B197200675E6E /* NotSupportedViewController.swift in Sources */,
@@ -272,6 +295,7 @@
 				49D206F31F124BDD00D7D622 /* SCNNode+Extensions.swift in Sources */,
 				E5251AB220790F5A00A52CCF /* SkyscannerPlace.swift in Sources */,
 				49A3FBF51F099A5F00AA59C8 /* LocationManager.swift in Sources */,
+				E5251AB92079222900A52CCF /* PlaceAnnotationView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

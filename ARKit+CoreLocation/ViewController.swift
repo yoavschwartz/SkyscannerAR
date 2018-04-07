@@ -55,17 +55,22 @@ class ViewController: UIViewController, MKMapViewDelegate, SceneLocationViewDele
             sceneLocationView.showFeaturePoints = true
         }
 
-        let pinCoordinate = CLLocationCoordinate2D(latitude: 51.5073509, longitude: -0.12775829999998223)
-        let pinLocation = CLLocation(coordinate: pinCoordinate, altitude: 236)
-        let pinImage = UIImage(named: "london")!
-        let pinLocationNode = LocationAnnotationNode(location: pinLocation, image: pinImage)
-        sceneLocationView.addLocationNodeWithConfirmedLocation(locationNode: pinLocationNode)
+        let places = try! getPlace()//.map {  }
+        for place in places {
+            getQuote(for: place) {[weak self] (quote) in
+                if let quote = quote {
+                    DispatchQueue.main.async {
+                        let view = UINib(nibName: "PlaceAnnotationView", bundle: nil).instantiate(withOwner: nil, options: nil)[0] as! PlaceAnnotationView
+                        view.update(name: place.name, price: quote.MinPrice)
+                        view.layer.cornerRadius = 5.0
+                        view.layer.masksToBounds = true
+                        let node = LocationAnnotationNode(place: place, price: quote.MinPrice, currencyCode: "DKK", image: UIImage(view: view))
+                        self?.sceneLocationView.addLocationNodeWithConfirmedLocation(locationNode: node)
+                    }
+                }
+            }
+        }
 
-        let newYorkCoordinate = CLLocationCoordinate2D(latitude: 40.7127753, longitude: -74.0059728)
-        let newYorkLocation = CLLocation(coordinate: newYorkCoordinate, altitude: 236)
-        let newYorkCoordinateLocationNode = LocationAnnotationNode(location: newYorkLocation, image: #imageLiteral(resourceName: "New-York"))
-        sceneLocationView.addLocationNodeWithConfirmedLocation(locationNode: newYorkCoordinateLocationNode)
-        
         view.addSubview(sceneLocationView)
     }
     
@@ -77,7 +82,7 @@ class ViewController: UIViewController, MKMapViewDelegate, SceneLocationViewDele
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
-        DDLogDebug("pause")
+//        DDLogDebug("pause")
         // Pause the view's session
         sceneLocationView.pause()
     }
@@ -146,15 +151,48 @@ class ViewController: UIViewController, MKMapViewDelegate, SceneLocationViewDele
         }
     }
 
+    func getPlace() throws -> [SkyscannerPlace] {
+            do {
+                let path = Bundle.main.path(forResource: "skyscannerplaces", ofType: "json")!
+                let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .alwaysMapped)
+                let decoder = JSONDecoder()
+                let places = try decoder.decode([SkyscannerPlace].self, from: data)
+                return places
+            } catch {
+                print(error)
+                fatalError()
+            }
+    }
+
+    func getQuote(for place: SkyscannerPlace, completion: @escaping (Quote?) -> Void) {
+        let url = URL(string: "https://partners.api.skyscanner.net/apiservices/browsequotes/v1.0/DK/DKK/en/CPH-sky/\(place.skyscannerPlaceId)/2018-04-18?apiKey=ha139357845922605706835424148329")!
+        URLSession.shared.dataTask(with: url) { (data, response, error) in
+            if let e = error {
+                print(e)
+            }
+
+            var quote: Quote? = nil
+            if let data = data {
+                let decoder = JSONDecoder()
+                do {
+                    quote = try decoder.decode(TopLevelQuote.self, from: data).Quotes.first
+                } catch {
+                    print(error)
+                }
+            }
+
+            completion(quote)
+            }.resume()
+    }
     
     //MARK: SceneLocationViewDelegate
     
     func sceneLocationViewDidAddSceneLocationEstimate(sceneLocationView: SceneLocationView, position: SCNVector3, location: CLLocation) {
-        DDLogDebug("add scene location estimate, position: \(position), location: \(location.coordinate), accuracy: \(location.horizontalAccuracy), date: \(location.timestamp)")
+//        DDLogDebug("add scene location estimate, position: \(position), location: \(location.coordinate), accuracy: \(location.horizontalAccuracy), date: \(location.timestamp)")
     }
     
     func sceneLocationViewDidRemoveSceneLocationEstimate(sceneLocationView: SceneLocationView, position: SCNVector3, location: CLLocation) {
-        DDLogDebug("remove scene location estimate, position: \(position), location: \(location.coordinate), accuracy: \(location.horizontalAccuracy), date: \(location.timestamp)")
+//        DDLogDebug("remove scene location estimate, position: \(position), location: \(location.coordinate), accuracy: \(location.horizontalAccuracy), date: \(location.timestamp)")
     }
     
     func sceneLocationViewDidConfirmLocationOfNode(sceneLocationView: SceneLocationView, node: LocationNode) {
@@ -188,4 +226,14 @@ extension UIView {
     }
 }
 
+
+extension UIImage {
+    convenience init(view: UIView) {
+        UIGraphicsBeginImageContext(view.frame.size)
+        view.layer.render(in:UIGraphicsGetCurrentContext()!)
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        self.init(cgImage: image!.cgImage!)
+    }
+}
 

@@ -1,0 +1,50 @@
+[
+    {
+      "name": "Paris",
+      "latitude": 48.856614,
+      "longitude": 2.3522219,
+      "skyscannerPlaceId": "CDG-sky"
+    },
+    {
+      "name": "Stockholm",
+      "latitude": 59.32932,
+      "longitude": 18.068580,
+      "skyscannerPlaceId": "STOC-sky"
+    },
+    {
+      "name": "Moscow",
+      "latitude": 55.755826,
+      "longitude": 37.617299,
+      "skyscannerPlaceId": "MOSC-sky"
+    },
+    {
+      "name": "New York",
+      "latitude": 40.741895,
+      "longitude": -73.989308,
+      "skyscannerPlaceId": "JFK-sky"
+    },
+    {
+      "name": "London",
+      "latitude": 51.5073509,
+      "longitude": -0.127758,
+      "skyscannerPlaceId": "LHR-sky"
+    },
+    {
+      "name": "Rome",
+      "latitude": 41.9027835,
+      "longitude": 12.4963655,
+      "skyscannerPlaceId": "CIA-sky"
+    },
+    {
+      "name": "Dubai",
+      "latitude": 25.2048493,
+      "longitude": 55.270782,
+      "skyscannerPlaceId": "DWC-sky"
+    },
+    {
+      "name": "Bangkok",
+      "latitude": 13.7563309,
+      "longitude": 100.501765,
+      "skyscannerPlaceId": "BKK-sky"
+    }
+  ]
